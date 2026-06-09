@@ -1,0 +1,73 @@
+[
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_semillaId", "type": "uint256" },
+      { "internalType": "int256",  "name": "_latitud",   "type": "int256"  },
+      { "internalType": "int256",  "name": "_longitud",  "type": "int256"  },
+      { "internalType": "string",  "name": "_apiKey",    "type": "string"  }
+    ],
+    "name": "solicitarDatosClimaticos",
+    "outputs": [{ "internalType": "bytes32", "name": "requestId", "type": "bytes32" }],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "_semillaId", "type": "uint256" }],
+    "name": "obtenerDatosVerificados",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "int256",  "name": "temperatura",       "type": "int256"  },
+          { "internalType": "uint256", "name": "humedadRelativa",   "type": "uint256" },
+          { "internalType": "uint256", "name": "precipitacion",     "type": "uint256" },
+          { "internalType": "uint256", "name": "horasLuzSolar",     "type": "uint256" },
+          { "internalType": "uint256", "name": "timestamp",         "type": "uint256" },
+          { "internalType": "bool",    "name": "disponible",        "type": "bool"    }
+        ],
+        "internalType": "struct ViveroClimaOracle.DatosClimaVerificados",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "_semillaId", "type": "uint256" }],
+    "name": "datosSonRecientes",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true,  "internalType": "bytes32", "name": "requestId",    "type": "bytes32" },
+      { "indexed": true,  "internalType": "uint256", "name": "semillaId",    "type": "uint256" },
+      { "indexed": false, "internalType": "int256",  "name": "temperatura",  "type": "int256"  },
+      { "indexed": false, "internalType": "uint256", "name": "humedad",      "type": "uint256" },
+      { "indexed": false, "internalType": "uint256", "name": "precipitacion","type": "uint256" }
+    ],
+    "name": "DatosClimaRecibidos",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true,  "internalType": "bytes32", "name": "requestId", "type": "bytes32" },
+      { "indexed": true,  "internalType": "uint256", "name": "semillaId", "type": "uint256" }
+    ],
+    "name": "SolicitudClimaEnviada",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true,  "internalType": "uint256", "name": "semillaId", "type": "uint256" },
+      { "indexed": false, "internalType": "string",  "name": "alerta",    "type": "string"  },
+      { "indexed": false, "internalType": "int256",  "name": "valor",     "type": "int256"  }
+    ],
+    "name": "AlertaClimatica",
+    "type": "event"
+  }
+]
